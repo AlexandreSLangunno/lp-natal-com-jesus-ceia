@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osceia - Natal Solidário</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fontes e Ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Máscara para telefone -->
+    <script src="https://unpkg.com/imask"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        osceia: {
+                            green: '#00A758',  // Verde Principal solicitado
+                            dark: '#007a40',   // Verde Escuro para hover
+                            yellow: '#f59e0b', // Amarelo secundário
+                            red: '#dc2626',    // Vermelho Natalino (detalhes)
+                            light: '#f0fdf4',  // Fundo claro esverdeado
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in-section { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+        .fade-in-section.is-visible { opacity: 1; transform: none; }
+        
+        /* Gradiente Verde Osceia */
+        .bg-osceia-gradient {
+            background: linear-gradient(135deg, #00A758 0%, #007a40 100%);
+        }
+
+        /* Detalhe de Natal */
+        .christmas-decoration {
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M10 0l2.5 7.5L20 10l-7.5 2.5L10 20l-2.5-7.5L0 10l7.5-2.5z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased scroll-smooth">
+
+    <!-- Navegação -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <!-- Logo Adaptado -->
+                <div class="flex items-center gap-3">
+                    <div class="flex flex-col leading-none">
+                        <!-- <span class="text-3xl font-extrabold text-osceia-green tracking-tighter">CEIA</span> -->
+                        <!-- Logo CEIA https://irmaoaureo.com.br/wp-content/uploads/2020/05/logo-ceia-negativa.svg trocar para cor verde -->
+                        <img src="https://irmaoaureo.com.br/wp-content/uploads/2020/05/logo-ceia.svg" alt="Logo CEIA" class="h-10" >
+                        <span class="text-xs font-bold text-gray-500 tracking-widest uppercase">Natal com Jesus</span>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#campanha" class="text-gray-600 hover:text-osceia-green font-medium transition">A Campanha</a>
+                    <a href="#meta" class="text-gray-600 hover:text-osceia-green font-medium transition">Nossa Meta</a>
+                    <a href="#como-doar" class="bg-osceia-green text-white px-6 py-2.5 rounded-full font-bold hover:bg-osceia-dark transition shadow-lg shadow-green-500/30 flex items-center gap-2">
+                        <i class="ph-bold ph-gift"></i> Quero Doar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-[650px] flex items-center bg-osceia-gradient christmas-decoration overflow-hidden">
+        <!-- Imagem de Fundo com Overlay -->
+        <div class="absolute inset-0 z-0">
+            <!-- Imagem de doação de alimentos/natal -->
+            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Doação de Natal" class="w-full h-full object-cover opacity-20 mix-blend-overlay">
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center fade-in-section">
+            <div class="text-white">
+                <span class="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-blue-300 font-bold text-sm mb-6 flex w-fit items-center gap-2">
+                    <i class="ph-fill ph-star"></i> Campanha Natal com Jesus
+                </span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+                    Sua doação leva esperança para a <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-500">Mesa de Quem Precisa</span>
+                </h1>
+                <p class="text-xl text-green-50 mb-8 leading-relaxed max-w-lg">
+                    Neste Natal, ajude a Osceia a distribuir cestas básicas para famílias em situação de vulnerabilidade. Juntos, podemos fazer a diferença.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#como-doar" class="px-8 py-4 bg-green-500 text-white font-bold rounded-full hover:bg-green-400 transition shadow-lg text-center flex items-center justify-center gap-2">
+                        <i class="ph-bold ph-heart"></i> Doar Cesta Básica
+                    </a>
+                    <a href="#campanha" class="px-8 py-4 bg-transparent border border-green-500 text-green-500 font-bold rounded-full hover:bg-white/10 transition text-center flex items-center justify-center gap-2">
+                        Saiba Mais <i class="ph-bold ph-arrow-down"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Imagem Hero (Direita) -->
+            <div class="hidden lg:block relative group">
+                <div class="absolute -inset-1 bg-yellow-400 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="relative rounded-3xl shadow-2xl border-4 border-white/10 transform -rotate-2 hover:rotate-0 transition duration-500">
+                
+                <!-- Card Flutuante -->
+                <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
+                    <div class="bg-green-100 p-2 rounded-full text-osceia-green">
+                        <i class="ph-fill ph-check-circle text-2xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-bold uppercase">Meta de Cestas</p>
+                        <p class="text-xl font-bold text-gray-900">5.000 Unidades</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre a Campanha -->
+    <section id="campanha" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in-section">
+                <h2 class="text-osceia-green font-bold uppercase tracking-widest text-sm mb-3">Nossa Missão</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-900">Um Natal sem fome e com dignidade</h3>
+                <p class="mt-4 text-gray-600 text-lg">
+                    A campanha de Cestas de Natal da Osceia tem como objetivo garantir que centenas de famílias atendidas pelos nossos projetos sociais tenham um final de ano mais feliz e farto.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8" id="meta">
+                <!-- Card 1 -->
+                <div class="bg-osceia-light rounded-2xl p-8 hover:-translate-y-2 transition duration-300 border border-green-100 shadow-sm hover:shadow-xl fade-in-section">
+                    <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="ph-fill ph-basket text-3xl text-osceia-green"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Cesta Completa</h4>
+                    <p class="text-gray-600">Alimentos não perecíveis e itens essenciais para a ceia de Natal de uma família.</p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bg-osceia-light rounded-2xl p-8 hover:-translate-y-2 transition duration-300 border border-green-100 shadow-sm hover:shadow-xl fade-in-section" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="ph-fill ph-users-three text-3xl text-osceia-yellow"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Famílias Locais</h4>
+                    <p class="text-gray-600">Atendemos comunidades do Jardim Nova Esperança, Jardim Liberdade e região.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-osceia-light rounded-2xl p-8 hover:-translate-y-2 transition duration-300 border border-green-100 shadow-sm hover:shadow-xl fade-in-section" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="ph-fill ph-heart text-3xl text-osceia-red"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Amor e Carinho</h4>
+                    <p class="text-gray-600">Além do alimento, entregamos acolhimento e esperança para quem mais precisa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contador de Impacto -->
+    <section class="py-20 bg-osceia-green text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 relative z-10 fade-in-section text-center">
+            <h2 class="text-3xl font-bold mb-12">O Impacto da Sua Solidariedade</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm">
+                    <div class="text-5xl font-bold mb-2 counter" data-target="1500">0</div>
+                    <div class="text-green-100 font-medium">Famílias Cadastradas</div>
+                </div>
+                <div class="p-6 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm">
+                    <div class="text-5xl font-bold mb-2 counter" data-target="3500">0</div>
+                    <div class="text-green-100 font-medium">Cestas Distribuídas (Ano Anterior)</div>
+                </div>
+                <div class="p-6 border border-white/20 rounded-xl bg-white/5 backdrop-blur-sm">
+                    <div class="text-5xl font-bold mb-2 counter" data-target="100">0</div>
+                    <div class="text-green-100 font-medium">% Transparência</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulário de Doação -->
+    <section id="como-doar" class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 flex flex-col md:flex-row fade-in-section">
+                
+                <!-- Coluna Info -->
+                <div class="md:w-5/12 bg-gray-900 p-10 text-white flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute inset-0 bg-osceia-green opacity-90"></div>
+                    <div class="relative z-10">
+                        <h3 class="text-2xl font-bold mb-4">Como ajudar?</h3>
+                        <p class="text-green-50 text-sm mb-6 leading-relaxed">
+                            Você pode doar o valor correspondente a uma ou mais cestas, ou se cadastrar para entregar pessoalmente.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-white/10 p-4 rounded-lg border border-white/20">
+                                <p class="text-xs text-yellow-300 font-bold uppercase mb-1">Chave PIX (CNPJ)</p>
+                                <p class="text-lg font-mono font-bold select-all">25.006.149/0001-09</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative z-10 mt-8">
+                        <p class="text-xs opacity-70 mb-2">Dúvidas?</p>
+                        <p class="font-bold flex items-center gap-2"><i class="ph-fill ph-whatsapp-logo"></i> (62) 3297-3117</p>
+                    </div>
+                </div>
+
+                <!-- Coluna Form -->
+                <div class="md:w-7/12 p-10">
+                    <div class="text-center mb-8">
+                        <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-100 text-osceia-green mb-4">
+                            <i class="ph-bold ph-hand-heart text-2xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-900">Quero Contribuir</h2>
+                        <p class="text-gray-500 text-sm">Preencha seus dados para confirmarmos sua doação.</p>
+                    </div>
+
+                    <form id="donationForm" class="space-y-5">
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Nome Completo</label>
+                            <input type="text" id="nome" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-osceia-green focus:ring-2 focus:ring-green-100 outline-none transition">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label class="text-xs font-bold text-gray-500 uppercase">E-mail</label>
+                                <input type="email" id="email" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-osceia-green focus:ring-2 focus:ring-green-100 outline-none transition">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-xs font-bold text-gray-500 uppercase">WhatsApp</label>
+                                <input type="text" id="telefone" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-osceia-green focus:ring-2 focus:ring-green-100 outline-none transition">
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Tipo de Doação</label>
+                            <select id="tipoDoacao" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-osceia-green focus:ring-2 focus:ring-green-100 outline-none transition appearance-none">
+                                <option value="1 Cesta Básica">1 Cesta Básica (R$ 80,00)</option>
+                                <option value="2 Cestas Básicas">2 Cestas Básicas (R$ 160,00)</option>
+                                <option value="5 Cestas Básicas">5 Cestas Básicas (R$ 400,00)</option>
+                                <option value="Outro Valor">Outro Valor</option>
+                            </select>
+                        </div>
+
+                        <div class="flex items-start gap-3 pt-2">
+                            <input id="lgpd" type="checkbox" required class="mt-1 h-4 w-4 rounded border-gray-300 text-osceia-green focus:ring-osceia-green">
+                            <label for="lgpd" class="text-xs text-gray-500">
+                                Concordo em ser contatado pela Osceia para a finalização da doação (LGPD).
+                            </label>
+                        </div>
+
+                        <button type="submit" class="w-full bg-osceia-green hover:bg-osceia-dark text-white font-bold py-4 rounded-xl transition shadow-lg flex items-center justify-center gap-2 transform active:scale-95">
+                            <i class="ph-bold ph-whatsapp-logo text-xl"></i>
+                            Confirmar Doação via WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Institucional -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-12 mb-12">
+            <div>
+                <span class="text-2xl font-extrabold tracking-tight mb-4 block text-osceia-green">OSCEIA</span>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Obras Sociais do Centro Espírita Irmão Áureo.<br>
+                    Fundada em 04/05/1984 por voluntários dedicados ao bem.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-white">Contatos</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><i class="ph-fill ph-map-pin mr-2 text-osceia-green"></i> Jardim Nova Esperança - Goiânia/GO</li>
+                    <li><i class="ph-fill ph-phone mr-2 text-osceia-green"></i> (62) 3297-3117</li>
+                    <li><i class="ph-fill ph-identification-card mr-2 text-osceia-green"></i> CNPJ: 25.006.149/0001-09</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-white">Redes Sociais</h4>
+                <div class="flex space-x-4">
+                    <a href="https://www.instagram.com/ceirmaoaureo/" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-osceia-green transition"><i class="ph-fill ph-instagram-logo text-xl"></i></a>
+                    <a href="https://www.facebook.com/centroespiritairmaoaureo" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-osceia-green transition"><i class="ph-fill ph-facebook-logo text-xl"></i></a>
+                    <a href="https://www.youtube.com/c/CentroEsp%C3%ADritaIrm%C3%A3o%C3%81ureo/" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-osceia-green transition"><i class="ph-fill ph-youtube-logo text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
+            <p>&copy; 2025 Osceia. Todos os direitos reservados. | Projeto Acadêmico UniALFA (Gabriel, Arthur, Pedro, Alexandre)</p>
+        </div>
+    </footer>
+
+    <script>
+        // Máscara
+        IMask(document.getElementById('telefone'), { mask: '(00) 00000-0000' });
+
+        // Envio WhatsApp
+        document.getElementById('donationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const telefone = document.getElementById('telefone').value;
+            const tipoDoacao = document.getElementById('tipoDoacao').value;
+            const numeroONG = "+5562996176116"; 
+            
+            const mensagem = `*Nova Intenção de Doação - Natal Solidário*%0A%0A` +
+                             `👤 *Doador:* ${nome}%0A` +
+                             `📧 *Email:* ${email}%0A` +
+                             `📱 *WhatsApp:* ${telefone}%0A` +
+                             `🎁 *Doação:* ${tipoDoacao}%0A%0A` +
+                             `✅ *Aceite LGPD:* Confirmado`;
+
+            window.open(`https://api.whatsapp.com/send?phone=${numeroONG}&text=${mensagem}`, '_blank');
+        });
+
+        // Animações
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    const counters = entry.target.getElementsByClassName('counter');
+                    if(counters.length) Array.from(counters).forEach(runCounter);
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
+
+        function runCounter(el) {
+            const target = +el.getAttribute('data-target');
+            let count = 0, inc = target / 100;
+            const update = () => {
+                count += inc;
+                if(count < target) {
+                    el.innerText = Math.ceil(count);
+                    requestAnimationFrame(update);
+                } else el.innerText = target;
+            };
+            update();
+        }
+    </script>
+</body>
+</html>
